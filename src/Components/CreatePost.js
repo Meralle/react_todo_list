@@ -7,21 +7,23 @@ class CreatePost extends Component {
 			todos : []
 		}
 		this.addTodo = this.addTodo.bind(this)
-		console.log(this)
 	}
-
-	addTodo(todoText) {
-		this.todos.push({
-			todoText : todoText,
+	
+	addTodo(e, text) {
+		e.preventDefault();
+		this.state.todos.push({
+			text : this._inputElement.value,
 			completed: false
 		});
+		console.log(this.state.todos)
+		
 	}
 
   render() {
   	return(
   		<div>
   			<form onSubmit={this.addTodo}> 
-					<input placeholder="enter task"/>
+					<input ref={(e) => this._inputElement = e} placeholder="enter task"/>
 					<button className="btn waves-effect waves-light"  type="submit">add</button>
 				</form>	
   		</div>
