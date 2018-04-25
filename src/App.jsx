@@ -1,12 +1,6 @@
-<<<<<<< Updated upstream:src/App.jsx
 import React from 'react';
-=======
-import React, { Component } from 'react';
-import logo from './logo.svg'; 
->>>>>>> Stashed changes:src/App.js
-
-import './App.css';
 import CreatePost from './Components/CreatePost.jsx';
+import './App.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -29,7 +23,6 @@ class App extends React.Component {
       usersCopy.push({
         text : this.state.inputdata,
         completed: false
-
       })
     this.setState({
       userdata: usersCopy
@@ -38,27 +31,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-<<<<<<< Updated upstream:src/App.jsx
-        
-=======
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-        </header>
->>>>>>> Stashed changes:src/App.js
-            <form className="addTodo">
-                <h1><strong>Todo List</strong></h1> 
-                <input type="text"
-                    placeholder="Name"
-                    id="name"
-                    onChange={this.inputName}
-                    value={this.state.inputName}/>
-                <button
-                    className="btn waves-effect waves-light"
-                    type="submit"
-                    onClick={this.saveinput}>add
-                </button>
-            </form>
-       <CreatePost />
+       <CreatePost saveInput={this.saveinput} inputName={this.inputname}/>
       </div>
     );
   }
