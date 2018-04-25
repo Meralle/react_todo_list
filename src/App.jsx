@@ -1,4 +1,9 @@
+<<<<<<< Updated upstream:src/App.jsx
 import React from 'react';
+=======
+import React, { Component } from 'react';
+import logo from './logo.svg'; 
+>>>>>>> Stashed changes:src/App.js
 
 import './App.css';
 import CreatePost from './Components/CreatePost.jsx';
@@ -33,7 +38,13 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+<<<<<<< Updated upstream:src/App.jsx
         
+=======
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+        </header>
+>>>>>>> Stashed changes:src/App.js
             <form className="addTodo">
                 <h1><strong>Todo List</strong></h1> 
                 <input type="text"

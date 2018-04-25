@@ -1,6 +1,11 @@
+<<<<<<< Updated upstream:src/Components/CreatePost.jsx
 import React from 'react';
 
 class CreatePost extends React.Component {
+=======
+import React, { Component } from 'react';
+class CreatePost extends Component {
+>>>>>>> Stashed changes:src/Components/CreatePost.js
   render() {
   	return(
 			<div className="container" >
