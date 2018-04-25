@@ -1,20 +1,5 @@
 import React, { Component } from 'react';
 class CreatePost extends Component {
-  // nameRef = React.createRef();
-
-
-	// createTodos = (event) => {
- //    //stop the form from submiting
- //    event.preventDefault();
- //    const todo = {
- //      name:this.nameRef.value.value
- //    }
- //    console.log(todo);
- //    console.log('add todo')
-
-
- //  }
-
   render() {
   	return(
 			<div className="container" >

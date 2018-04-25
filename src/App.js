@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg'; 
 
 import './App.css';
@@ -10,28 +10,12 @@ class App extends Component {
     this.state = {
       // todos : []
       userdata:[],
-      inputdata:"todo"
+      inputdata:""
     }
-    // this.addTodo = this.addTodo.bind(this)
       this.inputName = this.inputName.bind(this); 
       this.saveinput = this.saveinput.bind(this);
   }
-  
-  // addTodo(e, text) {
-  //   console.log(e.target,text)
-  //   var localState = [...this.state.todos]
-  //   e.preventDefault();
-  //   localState.push({
-  //     text : this._inputElement.value,
-  //     completed: false
-  //   });
-  //   this.setState({todos: localState
-  //   })
-  //   console.log(this.state.todos)
-    
-  //  }
 
-  
     inputName =(e) => {
       this.setState({inputdata:e.target.value});
     }
@@ -42,7 +26,6 @@ class App extends Component {
       usersCopy.push({
         text : this.state.inputdata,
         completed: false
-
       })
     this.setState({
       userdata: usersCopy
@@ -54,8 +37,6 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>
-        
-     {/* <CreatePost handleTodo={this.addTodo} />*/}
             <form className="addTodo">
                 <h1><strong>Todo List</strong></h1> 
                 <input type="text"
