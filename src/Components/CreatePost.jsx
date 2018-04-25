@@ -8,12 +8,18 @@ class CreatePost extends React.Component {
 		}
 	}
   render() {
+  	   const listtemplate = this.props.todos.map( (post,i)=> { 
+        return post.text !== "" ? (
+          <li key={i}>{post.text}</li>
+          ) : null}
+  )
+
   	return(
 			<div className="container" >
 				<form action="#" className="addTodo form-inline mb-5 row">
 					<div className="col s8">
 						<label htmlFor="todo">Add Todo:</label>
-						<input type="text" defaultValue="milk" className="form-control mr-2 w-100" id="input" aria-describedby="emailHelp" placeholder="enter task" name="input" onChange={this.props.inputName} value={this.props.inputName} />
+						<input type="text" defaultValue="milk" className="form-control mr-2 w-100" id="input" aria-describedby="emailHelp" placeholder="enter task" name="input" onChange={this.props.inputName} />
 					</div>
 					<div className="col s8">
 						<button className="btn waves-effect waves-light" type="submit" onClick={this.props.saveInput}>
@@ -22,6 +28,7 @@ class CreatePost extends React.Component {
 						</div>
 				</form>
 				<h1><strong>Todo List</strong></h1>
+				<ul>{listtemplate}</ul>
 			</div>
   	)
   }

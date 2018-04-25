@@ -7,14 +7,16 @@ class App extends React.Component {
     super(props);
     this.state = {
       todos:[],
-      inputdata:"todo"
+      inputdata:""
     }
       this.inputName = this.inputName.bind(this); 
       this.saveinput = this.saveinput.bind(this);
   }
   
     inputName =(e) => {
-      this.setState({inputdata:e.target.value});
+      let inputdata = this.state.inputdata
+      let update = e.target.value
+      this.setState({inputdata: update});
     }
 
     saveinput = (e)=> {
@@ -31,7 +33,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-       <CreatePost saveInput={this.saveinput} inputName={this.inputname}/>
+       <CreatePost saveInput={this.saveinput} inputName={this.inputName} todos={this.state.todos}/>
       </div>
     );
   }
