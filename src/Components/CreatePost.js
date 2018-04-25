@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
 class CreatePost extends Component {
-	constructor(props) {
-		super(props);
+  // nameRef = React.createRef();
 
-		this.state = {
-			todos : []
-		}
-		this.addTodo = this.addTodo.bind(this)
-	}
-	
-	addTodo(e, text) {
-		e.preventDefault();
-		this.state.todos.push({
-			text : this._inputElement.value,
-			completed: false
-		});
-		console.log(this.state.todos)
-		
-	}
+
+	// createTodos = (event) => {
+ //    //stop the form from submiting
+ //    event.preventDefault();
+ //    const todo = {
+ //      name:this.nameRef.value.value
+ //    }
+ //    console.log(todo);
+ //    console.log('add todo')
+
+
+ //  }
 
   render() {
   	return(
@@ -34,3 +30,4 @@ class CreatePost extends Component {
   }
 }
 export default CreatePost;
+  
