@@ -6,11 +6,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: JSON.parse(localStorage.getItem("todos")) || [],
-      inputdata: ""
+      todos:JSON.parse(localStorage.getItem("todos")) || [],
+      inputdata:""
     }
   }
   
+
   inputName = (e) => {
     let inputdata = e.target.value
     this.setState({inputdata});
@@ -30,6 +31,8 @@ class App extends React.Component {
     localStorage.setItem("todos", JSON.stringify(todos))
   this.setState({ todos })
   }
+
+   
   render() {
     return (
       <div className="App">
