@@ -9,31 +9,30 @@ class App extends React.Component {
       todos:JSON.parse(localStorage.getItem("todos")) || [],
       inputdata:""
     }
-      this.inputName = this.inputName.bind(this); 
-      this.saveinput = this.saveinput.bind(this);
   }
   
-    inputName =(e) => {
-      let inputdata = this.state.inputdata
-      let update = e.target.value
-      this.setState({inputdata: update});
-    }
 
-    saveinput = (e)=> {
-      var todosCopy = [...this.state.todos];
-      e.preventDefault();
-     todosCopy.push({
-        text : this.state.inputdata,
-        completed: false
-      })
-    this.setState({
-      todos:todosCopy
+  inputName = (e) => {
+    let inputdata = e.target.value
+    this.setState({inputdata});
+  }
+  handleDelete = () => {
+    let todos = [...this.state.todos]
+    
+    this.setState({ todos })
+  }
+  saveinput = (e)=> {
+    let todos = [...this.state.todos];
+    e.preventDefault();
+    todos.push({
+      text : this.state.inputdata,
+      completed: false
     })
-      this.setState({ todos: todosCopy})
-     localStorage.setItem("todos", JSON.stringify(todosCopy))    
-     console.log(this.state.todos);
-   }
-  
+    localStorage.setItem("todos", JSON.stringify(todos))
+  this.setState({ todos })
+  }
+
+   
   render() {
     return (
       <div className="App">
