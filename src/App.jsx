@@ -12,7 +12,9 @@ class App extends React.Component {
   }
   
   inputName = (e) => {
-    this.setState({inputdata: e.target.value});
+    let value = this.state.inputdata
+    let update = value.e.target
+    this.setState({inputdata: update});
   }
   handleDelete = () => {
     let userdata = [...this.state.userdata]
