@@ -1,34 +1,40 @@
 import React, { Component } from 'react';
 class CreatePost extends Component {
-	constructor(props) {
-		super(props);
+  // nameRef = React.createRef();
 
-		this.state = {
-			todos : []
-		}
-		this.addTodo = this.addTodo.bind(this)
-	}
-	
-	addTodo(e, text) {
-		e.preventDefault();
-		this.state.todos.push({
-			text : this._inputElement.value,
-			completed: false
-		});
-		console.log(this.state.todos)
-		
-	}
+
+	// createTodos = (event) => {
+ //    //stop the form from submiting
+ //    event.preventDefault();
+ //    const todo = {
+ //      name:this.nameRef.value.value
+ //    }
+ //    console.log(todo);
+ //    console.log('add todo')
+
+
+ //  }
 
   render() {
   	return(
-  		<div>
-  			<form onSubmit={this.addTodo}> 
-					<input ref={(e) => this._inputElement = e} placeholder="enter task"/>
-					<button className="btn waves-effect waves-light"  type="submit">add</button>
-				</form>	
-  		</div>
+  	     <div>
+          
+      			{/*<form onSubmit={(e) => this.props.handleTodo(e, this)}> 
+    					<input placeholder="enter task"/>
+    					<button classNameName="btn waves-effect waves-light"  type="submit">add</button>
+    				</form>*/}	
+            {/*<form className="addTodo" onSubmit={this.createTodos}>
+               <h1><strong>Todo List</strong></h1> 
+               <input type="text"
+                placeholder="Name"
+                name="name"
+                ref={this.nameRef}/>
+               <button type="submit" className="btn waves-effect waves-light"  type="submit">add</button>
+            </form> */}
+        </div>           
   	)
 
   }
 }
 export default CreatePost;
+  
