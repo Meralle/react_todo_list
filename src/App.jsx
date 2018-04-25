@@ -13,14 +13,15 @@ class App extends React.Component {
   
 
     saveinput = (e)=> {
-      var todosCopy = [...this.state.todos];
-      e.preventDefault();
-      todosCopy.push({
+       e.preventDefault();
+        var todosCopy = [...this.state.todos];
+       let emptyInput = document.getElementById('input').value="";
+        todosCopy.push({
         text : this.state.inputdata,
         completed: false,
-        _id: Math.random().toString(36).substring(7)
-      })
-      this.setState({
+        // id: Math.random().toString(36).substring(7)
+      });
+        this.setState({
         todos:todosCopy
     })
 
@@ -29,26 +30,27 @@ class App extends React.Component {
       console.log(this.state.todos);
   }
 
-     handleDelete(_id) {
-     let todosCopy = [...this.state.todos];
+     handleDelete = (item) => {
+      console.log(item)
+     // let todosCopy = [...this.state.todos];
      var todos = JSON.parse(localStorage.getItem('todos'));
        for(var i = 0; i < todos.length; i++) {
-         if(todos[i]._id === _id) {
+         if(todos[i].text === item.text) {
            todos.splice(i, 1);
        }
-  }
-      localStorage.setItem('todos', JSON.stringify(todos));
-      this.setState({todos: todos})  }
+       localStorage.setItem('todos', JSON.stringify(todos));
+      this.setState({todos: todos}) 
+    }
+}
+     // handleChange = (e) => {
+     //  this.setState({inpdata:e.target.value})
+     // }
   
-  inputName = (e) => {
-    let inputdata = e.target.value
-    this.setState({inputdata});
-  }
-  handleDelete = () => {
-    let todos = [...this.state.todos]
-    
-    this.setState({ todos })
-  }
+      inputName = (e) => {
+        let inputdata = e.target.value
+        this.setState({inputdata});
+      }
+  
   saveinput = (e)=> {
     let todos = [...this.state.todos];
     e.preventDefault();
@@ -64,7 +66,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-       <CreatePost saveInput={this.saveinput} inputName={this.inputName} todos={this.state.todos}/>
+       <CreatePost saveInput={this.saveinput}
+                    inputName={this.inputName} 
+                    todos={this.state.todos}
+                    handleDelete={this.handleDelete} />
       </div>
     );
   }
