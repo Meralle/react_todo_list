@@ -31,7 +31,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-       <CreatePost saveTheInput={this.saveinput} inputNameVor={this.inputname}/>
+       <CreatePost saveInput={this.saveinput} inputName={this.inputname}/>
       </div>
     );
   }
