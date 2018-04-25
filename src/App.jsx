@@ -9,24 +9,24 @@ class App extends React.Component {
       userdata:[],
       inputdata:"todo"
     }
-      this.inputName = this.inputName.bind(this); 
-      this.saveinput = this.saveinput.bind(this);
   }
   
-    inputName =(e) => {
-      this.setState({inputdata:e.target.value});
-    }
-
-    saveinput = (e)=> {
-      var usersCopy = [...this.state.userdata];
-      e.preventDefault();
-      usersCopy.push({
-        text : this.state.inputdata,
-        completed: false
-      })
-    this.setState({
-      userdata: usersCopy
+  inputName = (e) => {
+    this.setState({inputdata: e.target.value});
+  }
+  handleDelete = () => {
+    let userdata = [...this.state.userdata]
+    
+    this.setState({ userdata })
+  }
+  saveinput = (e)=> {
+    let userdata = [...this.state.userdata];
+    e.preventDefault();
+    userdata.push({
+      text : this.state.inputdata,
+      completed: false
     })
+  this.setState({ userdata })
   }
   render() {
     return (
