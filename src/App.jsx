@@ -23,7 +23,6 @@ class App extends React.Component {
       usersCopy.push({
         text : this.state.inputdata,
         completed: false
-
       })
     this.setState({
       userdata: usersCopy
@@ -32,7 +31,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-       <CreatePost saveTheInput={this.saveinput} inputName={this.inputname}/>
+       <CreatePost saveTheInput={this.saveinput} inputNameVor={this.inputname}/>
       </div>
     );
   }
