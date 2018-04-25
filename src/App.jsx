@@ -22,17 +22,30 @@ class App extends React.Component {
     saveinput = (e)=> {
       var todosCopy = [...this.state.todos];
       e.preventDefault();
-     todosCopy.push({
+      todosCopy.push({
         text : this.state.inputdata,
-        completed: false
+        completed: false,
+        _id: Math.random().toString(36).substring(7)
       })
-    this.setState({
-      todos:todosCopy
+      this.setState({
+        todos:todosCopy
     })
+
       this.setState({ todos: todosCopy})
-     localStorage.setItem("todos", JSON.stringify(todosCopy))    
-     console.log(this.state.todos);
-   }
+      localStorage.setItem("todos", JSON.stringify(todosCopy))    
+      console.log(this.state.todos);
+  }
+
+     handleDelete(_id) {
+     let todosCopy = [...this.state.todos];
+     var todos = JSON.parse(localStorage.getItem('todos'));
+       for(var i = 0; i < todos.length; i++) {
+         if(todos[i]._id === _id) {
+           todos.splice(i, 1);
+       }
+  }
+      localStorage.setItem('todos', JSON.stringify(todos));
+      this.setState({todos: todos})  }
   
   render() {
     return (
