@@ -1,18 +1,12 @@
-<<<<<<< Updated upstream:src/App.jsx
 import React from 'react';
-=======
-import React, { Component } from 'react';
-import logo from './logo.svg'; 
->>>>>>> Stashed changes:src/App.js
-
-import './App.css';
 import CreatePost from './Components/CreatePost.jsx';
+import './App.css';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userdata:[],
+      todos:[],
       inputdata:"todo"
     }
       this.inputName = this.inputName.bind(this); 
@@ -24,41 +18,20 @@ class App extends React.Component {
     }
 
     saveinput = (e)=> {
-      var usersCopy = [...this.state.userdata];
+      var todosCopy = [...this.state.todos];
       e.preventDefault();
-      usersCopy.push({
+     todosCopy.push({
         text : this.state.inputdata,
         completed: false
-
       })
     this.setState({
-      userdata: usersCopy
+      todos:todosCopy
     })
   }
   render() {
     return (
       <div className="App">
-<<<<<<< Updated upstream:src/App.jsx
-        
-=======
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-        </header>
->>>>>>> Stashed changes:src/App.js
-            <form className="addTodo">
-                <h1><strong>Todo List</strong></h1> 
-                <input type="text"
-                    placeholder="Name"
-                    id="name"
-                    onChange={this.inputName}
-                    value={this.state.inputName}/>
-                <button
-                    className="btn waves-effect waves-light"
-                    type="submit"
-                    onClick={this.saveinput}>add
-                </button>
-            </form>
-       <CreatePost />
+       <CreatePost saveInput={this.saveinput} inputName={this.inputname}/>
       </div>
     );
   }
