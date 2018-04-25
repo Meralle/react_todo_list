@@ -47,6 +47,26 @@ class App extends React.Component {
       localStorage.setItem('todos', JSON.stringify(todos));
       this.setState({todos: todos})  }
   
+  inputName = (e) => {
+    let inputdata = e.target.value
+    this.setState({inputdata});
+  }
+  handleDelete = () => {
+    let todos = [...this.state.todos]
+    
+    this.setState({ todos })
+  }
+  saveinput = (e)=> {
+    let todos = [...this.state.todos];
+    e.preventDefault();
+    todos.push({
+      text : this.state.inputdata,
+      completed: false
+    })
+    localStorage.setItem("todos", JSON.stringify(todos))
+  this.setState({ todos })
+  }
+
   render() {
     return (
       <div className="App">
