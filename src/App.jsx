@@ -6,7 +6,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos:[],
+      todos:JSON.parse(localStorage.getItem("todos")) || [],
       inputdata:""
     }
       this.inputName = this.inputName.bind(this); 
@@ -29,7 +29,11 @@ class App extends React.Component {
     this.setState({
       todos:todosCopy
     })
-  }
+      this.setState({ todos: todosCopy})
+     localStorage.setItem("todos", JSON.stringify(todosCopy))    
+     console.log(this.state.todos);
+   }
+  
   render() {
     return (
       <div className="App">
