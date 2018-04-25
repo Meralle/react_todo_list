@@ -6,7 +6,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userdata:[],
+      todos:[],
       inputdata:"todo"
     }
       this.inputName = this.inputName.bind(this); 
@@ -18,14 +18,14 @@ class App extends React.Component {
     }
 
     saveinput = (e)=> {
-      var usersCopy = [...this.state.userdata];
+      var todosCopy = [...this.state.todos];
       e.preventDefault();
-      usersCopy.push({
+     todosCopy.push({
         text : this.state.inputdata,
         completed: false
       })
     this.setState({
-      userdata: usersCopy
+      todos:todosCopy
     })
   }
   render() {
