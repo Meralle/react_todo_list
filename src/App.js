@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+// import logo from './logo.svg'; 
+
 import './App.css';
-import CreatePost from './Components/CreatePost';
+import CreatePost from './Components/CreatePost.js';
 
 class App extends Component {
   constructor(props) {
@@ -76,4 +77,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App; 
