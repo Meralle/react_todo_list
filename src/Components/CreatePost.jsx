@@ -12,7 +12,7 @@ class CreatePost extends React.Component {
 			return item.text !== '' ?  (
 					<li className="" data-name="meral" key={i}>
 						<button className="">done</button>
-						<span contenteditable="true" className="title">{item.text}</span>
+						<span className="title">{item.text}</span>
 						<button className="" onClick={(e) => this.props.handleDelete(item)}>X</button>
 					</li>
 					) : (null)
@@ -23,7 +23,7 @@ class CreatePost extends React.Component {
 				<form action="#" className="addTodo form-inline mb-5 row">
 					<div className="col s8">
 						<label htmlFor="todo">Add Todo:</label>
-						<input type="text"  className="form-control mr-2 w-100" id="input" aria-describedby="emailHelp" placeholder="enter task" name="input" onChange={this.props.inputName}/>
+						<input type="text" value={this.props.value} className="form-control mr-2 w-100" id="input" aria-describedby="emailHelp" placeholder="enter task" name="input" onChange={this.props.inputName}/>
 					</div>
 					<div className="col s8">
 					<button className="btn waves-effect waves-light" type="submit" onClick={this.props.saveInput}>

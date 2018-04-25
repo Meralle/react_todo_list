@@ -15,21 +15,37 @@ class App extends React.Component {
     saveinput = (e)=> {
        e.preventDefault();
         var todosCopy = [...this.state.todos];
-       let emptyInput = document.getElementById('input').value="";
+       // let emptyInput = document.getElementById('input').value="";
         todosCopy.push({
         text : this.state.inputdata,
         completed: false,
         // id: Math.random().toString(36).substring(7)
       });
         this.setState({
-        todos:todosCopy
+        todos:todosCopy,
+        inputdata:""
     })
-
+      //to save the localstorage
       this.setState({ todos: todosCopy})
       localStorage.setItem("todos", JSON.stringify(todosCopy))    
       console.log(this.state.todos);
   }
 
+
+  // saveinput = (e) => {
+    //   let todos = [...this.state.todos];
+    //   e.preventDefault();
+    //   todos.push({
+    //     text : this.state.inputdata,
+    //     completed: false,
+    //     inputdata:""
+    //   })
+    //   localStorage.setItem("todos", JSON.stringify(todos))
+    //    this.setState({ todos })
+    // }
+
+
+    //delete items and from localstorage
      handleDelete = (item) => {
       console.log(item)
      // let todosCopy = [...this.state.todos];
@@ -39,40 +55,28 @@ class App extends React.Component {
            todos.splice(i, 1);
        }
        localStorage.setItem('todos', JSON.stringify(todos));
-      this.setState({todos: todos}) 
-    }
-}
+        this.setState({ todos : todos}) 
+     }
+  }
      // handleChange = (e) => {
      //  this.setState({inpdata:e.target.value})
      // }
   
       inputName = (e) => {
         let inputdata = e.target.value
-        this.setState({inputdata});
+        this.setState({ inputdata });
       }
-  
-  saveinput = (e)=> {
-    let todos = [...this.state.todos];
-    e.preventDefault();
-    todos.push({
-      text : this.state.inputdata,
-      completed: false
-    })
-    localStorage.setItem("todos", JSON.stringify(todos))
-  this.setState({ todos })
+    render() {
+      return (
+        <div className="App">
+         <CreatePost saveInput={this.saveinput}
+                      inputName={this.inputName} 
+                      todos={this.state.todos}
+                      handleDelete={this.handleDelete}
+                      value={this.state.inputdata} />
+        </div>
+      );
+    }
   }
-
-   
-  render() {
-    return (
-      <div className="App">
-       <CreatePost saveInput={this.saveinput}
-                    inputName={this.inputName} 
-                    todos={this.state.todos}
-                    handleDelete={this.handleDelete} />
-      </div>
-    );
-  }
-}
 
 export default App; 
