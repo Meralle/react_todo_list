@@ -6,34 +6,34 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userdata:[],
-      inputdata:"todo"
+      todos: JSON.parse(localStorage.getItem("todos")) || [],
+      inputdata: ""
     }
   }
   
   inputName = (e) => {
-    let value = this.state.inputdata
-    let update = value.e.target
-    this.setState({inputdata: update});
+    let inputdata = e.target.value
+    this.setState({inputdata});
   }
   handleDelete = () => {
-    let userdata = [...this.state.userdata]
+    let todos = [...this.state.todos]
     
-    this.setState({ userdata })
+    this.setState({ todos })
   }
   saveinput = (e)=> {
-    let userdata = [...this.state.userdata];
+    let todos = [...this.state.todos];
     e.preventDefault();
-    userdata.push({
+    todos.push({
       text : this.state.inputdata,
       completed: false
     })
-  this.setState({ userdata })
+    localStorage.setItem("todos", JSON.stringify(todos))
+  this.setState({ todos })
   }
   render() {
     return (
       <div className="App">
-       <CreatePost saveInput={this.saveinput} inputName={this.inputname}/>
+       <CreatePost saveInput={this.saveinput} inputName={this.inputName} todos={this.state.todos}/>
       </div>
     );
   }
