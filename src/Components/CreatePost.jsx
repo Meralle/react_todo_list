@@ -9,16 +9,15 @@ class CreatePost extends React.Component {
 	}
   render() {
 		const templatelist = this.props.todos.map((item, i) =>{
-			return item.text !== '' ? (
-					<li className="" data-name="meral" key={i}>{
+			return item.text !== '' ?  (
+					<li className="" data-name="meral" key={i}>
 						<button className="">done</button>
 						<span contenteditable="true" className="title">{item.text}</span>
 						<button className="">X</button>
 					</li>
 					) : (null)
-		})
   
-
+})
   	return(
 			<div className="container" >
 				<form action="#" className="addTodo form-inline mb-5 row">
