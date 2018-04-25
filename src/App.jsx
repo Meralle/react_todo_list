@@ -13,61 +13,70 @@ class App extends React.Component {
   
 
     saveinput = (e)=> {
-      var todosCopy = [...this.state.todos];
-      e.preventDefault();
-      todosCopy.push({
+       e.preventDefault();
+        var todosCopy = [...this.state.todos];
+       // let emptyInput = document.getElementById('input').value="";
+        todosCopy.push({
         text : this.state.inputdata,
         completed: false,
-        _id: Math.random().toString(36).substring(7)
-      })
-      this.setState({
-        todos:todosCopy
+        // id: Math.random().toString(36).substring(7)
+      });
+        this.setState({
+        todos:todosCopy,
+        inputdata:""
     })
-
+      //to save the localstorage
       this.setState({ todos: todosCopy})
       localStorage.setItem("todos", JSON.stringify(todosCopy))    
       console.log(this.state.todos);
   }
 
-     handleDelete(_id) {
-     let todosCopy = [...this.state.todos];
+
+  // saveinput = (e) => {
+    //   let todos = [...this.state.todos];
+    //   e.preventDefault();
+    //   todos.push({
+    //     text : this.state.inputdata,
+    //     completed: false,
+    //     inputdata:""
+    //   })
+    //   localStorage.setItem("todos", JSON.stringify(todos))
+    //    this.setState({ todos })
+    // }
+
+
+    //delete items and from localstorage
+     handleDelete = (item) => {
+      console.log(item)
+     // let todosCopy = [...this.state.todos];
      var todos = JSON.parse(localStorage.getItem('todos'));
        for(var i = 0; i < todos.length; i++) {
-         if(todos[i]._id === _id) {
+         if(todos[i].text === item.text) {
            todos.splice(i, 1);
        }
+       localStorage.setItem('todos', JSON.stringify(todos));
+        this.setState({ todos : todos}) 
+     }
   }
-      localStorage.setItem('todos', JSON.stringify(todos));
-      this.setState({todos: todos})  }
+     // handleChange = (e) => {
+     //  this.setState({inpdata:e.target.value})
+     // }
   
-  inputName = (e) => {
-    let inputdata = e.target.value
-    this.setState({inputdata});
+      inputName = (e) => {
+        let inputdata = e.target.value
+        this.setState({ inputdata });
+      }
+    render() {
+      return (
+        <div className="App">
+         <CreatePost saveInput={this.saveinput}
+                      inputName={this.inputName} 
+                      todos={this.state.todos}
+                      handleDelete={this.handleDelete}
+                      value={this.state.inputdata} />
+        </div>
+      );
+    }
   }
-  handleDelete = () => {
-    let todos = [...this.state.todos]
-    
-    this.setState({ todos })
-  }
-  saveinput = (e)=> {
-    let todos = [...this.state.todos];
-    e.preventDefault();
-    todos.push({
-      text : this.state.inputdata,
-      completed: false
-    })
-    localStorage.setItem("todos", JSON.stringify(todos))
-  this.setState({ todos })
-  }
-
-   
-  render() {
-    return (
-      <div className="App">
-       <CreatePost saveInput={this.saveinput} inputName={this.inputName} todos={this.state.todos}/>
-      </div>
-    );
-  }
-}
 
 export default App; 
