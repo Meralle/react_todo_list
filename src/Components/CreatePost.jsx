@@ -2,17 +2,18 @@ import React from 'react';
 
 class CreatePost extends React.Component {
   render() {
-		const templatelist = this.props.todos.map((item, i) =>{
-			return item.text !== '' ?  (				
-		        <li className="collection with-head" id={item._id} key={i} >
+		const templatelist = this.props.todos.length > 0 ?  (
+		 this.props.todos.map((item, i) => 
+			 				
+		        (<li className="collection with-head" id={item._id} key={i} >
 		        	<a className="waves-effect btn orange darken-3 btn-small right" onClick={(e) => this.props.handleDelete(item)}>delete</a>
 		        	<a className="waves-effect  btn orange darken-3 btn-small right" onClick={() => this.props.handleCompleted(item._id)}>done</a>
 		        	<h3 className="title">{item.text}</h3>
-		        </li>	
+		        </li>)	
 			      		
-					) : (null)	
-  
-})
+					)) : (
+					<div>no tasks</div>
+					)
   	return(
 			<div className="container row" >
 				<h1><strong>Todo List</strong></h1>
