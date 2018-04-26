@@ -7,7 +7,7 @@ class CreatePost extends React.Component {
 			 				
 		        (<li className="collection with-head" id={item._id} key={i} >
 		        	<a className="waves-effect btn orange darken-3 btn-small right" onClick={(e) => this.props.handleDelete(item)}>delete</a>
-		        	<a className="waves-effect  btn orange darken-3 btn-small right" onClick={() => this.props.handleCompleted(item._id)}>done</a>
+		        	<a className={"waves-effect  btn  btn-small right"  + (item.completed ? ' orange darken-3' : '  lime accent-3')} onClick={() => this.props.handleCompleted(item._id)}>done</a>
 		        	<h3 className="title">{item.text}</h3>
 		        </li>)	
 			      		
@@ -16,7 +16,7 @@ class CreatePost extends React.Component {
 					)
   	return(
 			<div className="container row" >
-				<h1><strong>Todo List</strong></h1>
+				<h1><strong>Todo_List</strong></h1>
 					<div className="form">
 					<form action="#" className="addTodo form-inline row">
 						<input type="text" value={this.props.value} aria-describedby="emailHelp" placeholder="enter task" name="input" onChange={this.props.inputName}/>
