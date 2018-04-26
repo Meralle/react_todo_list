@@ -3,53 +3,45 @@ import CreatePost from './Components/CreatePost.jsx';
 import './App.css';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      todos:JSON.parse(localStorage.getItem("todos")) || [],
-      inputdata:""
+    constructor(props) {
+        super(props);
+          this.state = {
+          todos:JSON.parse(localStorage.getItem("todos")) || [],
+          inputdata:""
     }
   }
   
 
     saveinput = (e)=> {
        e.preventDefault();
+       if(this.state.inputdata === "")
+          return;
         var todosCopy = [...this.state.todos];
-       // let emptyInput = document.getElementById('input').value="";
         todosCopy.push({
-        text : this.state.inputdata,
-        completed: false,
-        // id: Math.random().toString(36).substring(7)
+            text : this.state.inputdata,
+            completed: false
       });
-        this.setState({ todos:todosCopy, inputdata:"" })
+            this.setState({ todos:todosCopy, inputdata:"" })
+            localStorage.setItem("todos", JSON.stringify(todosCopy))    
+        
+    }
 
-      // save the localstorage
-        this.setState({ todos: todosCopy})
-        localStorage.setItem("todos", JSON.stringify(todosCopy))    
-        console.log(this.state.todos);
-  }
-
-    //delete items and from localstorage
+   
      handleDelete = (item) => {
-      console.log(item)
-     // let todosCopy = [...this.state.todos];
      var todos = JSON.parse(localStorage.getItem('todos'));
        for(var i = 0; i < todos.length; i++) {
          if(todos[i].text === item.text) {
            todos.splice(i, 1);
-       }
+      }
        localStorage.setItem('todos', JSON.stringify(todos));
         this.setState({ todos : todos}) 
-     }
+    }
   }
-     // handleChange = (e) => {
-     //  this.setState({inpdata:e.target.value})
-     // }
   
       inputName = (e) => {
         let inputdata = e.target.value
         this.setState({ inputdata });
-      }
+    }
       render() {
         return (
           <div className="App">

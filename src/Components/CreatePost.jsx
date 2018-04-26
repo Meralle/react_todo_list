@@ -1,21 +1,7 @@
 import React from 'react';
 
 class CreatePost extends React.Component {
-	constructor(props) { 
-	super(props)
-	this.state = {
-
-		}
-	}
   render() {
-  	const style={
-  		font:{
-  			font:"16px"
-  		},
-  		 margin:"0 1rem"
-  		
-
-  	}
 		const templatelist = this.props.todos.map((item, i) =>{
 			return item.text !== '' ?  (				
 		        <li className="collection with-head" data-name="meral" key={i} onClick={(e) => this.props.handleDelete(item)}>
@@ -32,7 +18,7 @@ class CreatePost extends React.Component {
 				<h1><strong>Todo List</strong></h1>
 					<div className="form">
 					<form action="#" className="addTodo form-inline row">
-						<input style={style.font} type="text" value={this.props.value} className="" id="input" aria-describedby="emailHelp" placeholder="enter task" name="input" onChange={this.props.inputName}/>
+						<input type="text" value={this.props.value} required className="" id="input" aria-describedby="emailHelp" placeholder="enter task" name="input" onChange={this.props.inputName}/>
 						<br/>
 						<button className="btn waves-effect orange darken-3 right" type="submit" onClick={this.props.saveInput}>
 							Submit
