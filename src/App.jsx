@@ -19,10 +19,11 @@ class App extends React.Component {
         var todosCopy = [...this.state.todos];
         todosCopy.push({
             text : this.state.inputdata,
-            completed: false
+            completed: false,
+            _id: Math.random().toString(36).substring(7)
       });
-            this.setState({ todos:todosCopy, inputdata:"" })
-            localStorage.setItem("todos", JSON.stringify(todosCopy))    
+          localStorage.setItem("todos", JSON.stringify(todosCopy)); 
+          this.setState({ todos:todosCopy, inputdata:"" })   
         
     }
 
@@ -33,10 +34,21 @@ class App extends React.Component {
          if(todos[i].text === item.text) {
            todos.splice(i, 1);
       }
-       localStorage.setItem('todos', JSON.stringify(todos));
+        localStorage.setItem('todos', JSON.stringify(todos));
         this.setState({ todos : todos}) 
     }
   }
+
+    handleCompleted = (_id) => {
+      var todosCopy = [...this.state.todos];
+        for(var i = 0; i < todosCopy.length; i++) {
+          if(todosCopy[i]._id === _id) {
+            todosCopy[i].completed = !todosCopy[i].completed     
+      }
+        localStorage.setItem('todos', JSON.stringify(todosCopy));
+        this.setState({ todos : todosCopy}) 
+    }
+  }   
   
       inputName = (e) => {
         let inputdata = e.target.value
@@ -49,7 +61,8 @@ class App extends React.Component {
                         inputName={this.inputName} 
                         todos={this.state.todos}
                         handleDelete={this.handleDelete}
-                        value={this.state.inputdata} />
+                        value={this.state.inputdata}
+                        handleCompleted ={this.handleCompleted}/>
           </div>
         );
       }
