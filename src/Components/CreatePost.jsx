@@ -19,7 +19,7 @@ class CreatePost extends React.Component {
 				<h1><strong>Todo_List</strong></h1>
 					<div className="form">
 					<form action="#" className="addTodo form-inline row">
-						<input type="text" value={this.props.value} aria-describedby="emailHelp" placeholder="enter task" name="input" onChange={this.props.inputName}/>
+						<input type="text" value={this.props.value} aria-describedby="emailHelp" placeholder="enter task" name="input" onChange={this.props.changeInput}/>
 						<br/>
 						<button className="btn waves-effect orange darken-3 right" type="submit" onClick={this.props.saveInput}>
 							Submit
