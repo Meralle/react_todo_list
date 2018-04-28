@@ -51,9 +51,10 @@ class App extends React.Component {
   }   
   
       changeInput = (e) => {
-        let inputdata = e.target.value
+        let inputdata = e.target.value.substr(0,20);
         this.setState({ inputdata });
     }
+    
       render() {
         return (
           <div className="App">
@@ -62,10 +63,11 @@ class App extends React.Component {
                         todos={this.state.todos}
                         handleDelete={this.handleDelete}
                         value={this.state.inputdata}
-                        handleCompleted ={this.handleCompleted}/>
+                        handleCompleted ={this.handleCompleted}
+          />
           </div>
         );
       }
   }
 
-export default App; 
+export default App;        
