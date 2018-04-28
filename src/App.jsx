@@ -12,7 +12,7 @@ class App extends React.Component {
   }
   
 
-    saveinput = (e)=> {
+    handleAddTodo = (e)=> {
        e.preventDefault();
        if(this.state.inputdata === "")
           return;
@@ -50,15 +50,15 @@ class App extends React.Component {
     }
   }   
   
-      inputName = (e) => {
+      changeInput = (e) => {
         let inputdata = e.target.value
         this.setState({ inputdata });
     }
       render() {
         return (
           <div className="App">
-           <CreatePost saveInput={this.saveinput}
-                        inputName={this.inputName} 
+           <CreatePost handleAddTodo={this.handleAddTodo}
+                        changeInput={this.changeInput} 
                         todos={this.state.todos}
                         handleDelete={this.handleDelete}
                         value={this.state.inputdata}
