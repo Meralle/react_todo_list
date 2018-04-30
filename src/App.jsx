@@ -10,17 +10,25 @@ class App extends React.Component {
       inputdata:""
     }
   }
-  
+
+  handleDelete = (item) => {
+    let todos = JSON.parse(localStorage.getItem('todos'));
+    todos.splice(todos.findIndex(todo => todo.text === item.text), 1);
+    //this is a oldschool for loop and there is a new methoud called findIndex() it is more 
+    // for (var i = 0; i < todos.length; i++) {
+    //   if (todos[i].text === item.text) {
+    //     todos.splice(i, 1);
+    //   }
+    // }
+    localStorage.setItem('todos', JSON.stringify(todos));
+    this.setState({ todos })
+  }
 
   inputName = (e) => {
     let inputdata = e.target.value
     this.setState({inputdata});
   }
-  handleDelete = () => {
-    let todos = [...this.state.todos]
-    
-    this.setState({ todos })
-  }
+
   saveinput = (e)=> {
     let todos = [...this.state.todos];
     e.preventDefault();
@@ -36,10 +44,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-       <CreatePost saveInput={this.saveinput} inputName={this.inputName} todos={this.state.todos}/>
+        <CreatePost saveInput={this.saveinput} inputName={this.inputName} todos={this.state.todos} delete={this.handleDelete} done={this.doneButton}/>
       </div>
     );
   }
 }
-
 export default App; 
