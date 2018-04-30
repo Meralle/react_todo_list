@@ -7,11 +7,12 @@ class App extends React.Component {
         super(props);
           this.state = {
           todos:JSON.parse(localStorage.getItem("todos")) || [],
-          inputdata:""
+          inputdata:"",
+          searchFilter:""
+
     }
   }
   
-
     handleAddTodo = (e)=> {
        e.preventDefault();
        if(this.state.inputdata === "")
@@ -20,10 +21,11 @@ class App extends React.Component {
         todosCopy.push({
             text : this.state.inputdata,
             completed: false,
+            created: Date.now(),
             _id: Math.random().toString(36).substring(7)
       });
           localStorage.setItem("todos", JSON.stringify(todosCopy)); 
-          this.setState({ todos:todosCopy, inputdata:"" })   
+          this.setState({ todos:todosCopy, inputdata:"" , searchFilter:"" })   
         
     }
 
@@ -54,7 +56,13 @@ class App extends React.Component {
         let inputdata = e.target.value.substr(0,20);
         this.setState({ inputdata });
     }
-    
+     
+     handleSearchInput =(e) =>  {
+     let todos = [...this.state.todos]                 
+      let searchFilter = e.currentTarget.value;
+      this.setState({ searchFilter: searchFilter });      
+    }
+
       render() {
         return (
           <div className="App">
@@ -63,8 +71,10 @@ class App extends React.Component {
                         todos={this.state.todos}
                         handleDelete={this.handleDelete}
                         value={this.state.inputdata}
-                        handleCompleted ={this.handleCompleted}
-          />
+                        handleCompleted ={this.handleCompleted} 
+                        handleSearchInput = {this.handleSearchInput}  
+                        searchFilter={this.state.searchFilter}/>               
+          
           </div>
         );
       }
