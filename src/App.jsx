@@ -3,11 +3,11 @@ import CreatePost from './Components/CreatePost.jsx';
 import './App.css';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      todos:JSON.parse(localStorage.getItem("todos")) || [],
-      inputdata:""
+    constructor(props) {
+        super(props);
+          this.state = {
+          todos:JSON.parse(localStorage.getItem("todos")) || [],
+          inputdata:""
     }
   }
 

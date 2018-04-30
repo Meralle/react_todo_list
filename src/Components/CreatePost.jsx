@@ -1,30 +1,32 @@
 import React from 'react';
 
 class CreatePost extends React.Component {
-	constructor(props) { 
-	super(props)
-	this.state = {
+	state={
 
-		}
 	}
   render() {
-		const templatelist = this.props.todos.map((item, i) =>{
-			return item.text !== '' ? (
-				<li className="row" data-name="meral" key={i}>
-					<button className="col s4" onChange={(e) => this.props.done(item)}>done</button>
-					<span className="title col s4">{item.text}</span>
-					<button className="col s4" onClick={(e)=>this.props.delete(item)}>X</button>
-					</li>
-					) : (null)
-		})
-  
-
+		const templatelist = this.props.todos.length > 0 ?  (
+		this.props.todos.map((item, i) =>
+		        (<li className="collection with-head" id={item._id} key={i} >
+		        	<a className="waves-effect btn orange darken-3 btn-small right" onClick={(e) => this.props.handleDelete(item)}>delete</a>
+		        	<a className={"waves-effect  btn  btn-small right"  + (item.completed ? ' orange darken-3' : '  lime accent-3')} onClick={() => this.props.handleCompleted(item._id)}>done</a>
+		        	<h3 className="title">{item.text}</h3>
+		        </li>)	
+			      		
+					)) : (
+					<div>no tasks</div>
+					)
   	return(
-			<div className="container" >
-				<form action="#" className="addTodo form-inline mb-5 row">
-					<div className="col s8">
-						<label htmlFor="todo">Add Todo:</label>
-						<input type="text" defaultValue="" className="form-control mr-2 w-100" id="input" aria-describedby="emailHelp" placeholder="enter task" name="input" onChange={this.props.inputName}/>
+			<div className="container row" >
+				<h1><strong>Todo - List</strong></h1>
+					<div className="form">
+					<form action="#" className="addTodo form-inline row">
+						<input type="text" value={this.props.value} aria-describedby="emailHelp" placeholder="enter task" name="input" onChange={this.props.changeInput}/>
+						<br/>
+						<button className="btn waves-effect orange darken-3 right" type="submit" onClick={this.props.handleAddTodo}>
+							Submit
+		          		</button>
+					</form>
 					</div>
 					<div className="col s8">
 						<button className="btn waves-effect waves-light" type="submit" onClick={this.props.saveInput}>
@@ -39,4 +41,6 @@ class CreatePost extends React.Component {
   }
 }
 export default CreatePost;
+
+
   
