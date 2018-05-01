@@ -60,7 +60,7 @@ class App extends React.Component {
      handleSearchInput =(e) =>  {
      let todos = [...this.state.todos]                 
       let searchFilter = e.currentTarget.value;
-      this.setState({ searchFilter: searchFilter });      
+      this.setState({ searchFilter });      
     }
 
       render() {
@@ -73,7 +73,7 @@ class App extends React.Component {
                         value={this.state.inputdata}
                         handleCompleted ={this.handleCompleted} 
                         handleSearchInput = {this.handleSearchInput}  
-                        searchFilter={this.state.searchFilter}/>               
+                        searchFilter={this.state.searchFilter}/>              
           
           </div>
         );
