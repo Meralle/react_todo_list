@@ -1,6 +1,9 @@
 import React from 'react';
-import CreatePost from './Components/CreatePost.jsx';
+import CreatePost from './Components/CreatePost';
+import PostList from './Components/PostList';
+import { Switch, Route, NavLink } from 'react-router-dom';
 import './App.css';
+
 
 class App extends React.Component {
     constructor(props) {
@@ -65,16 +68,49 @@ class App extends React.Component {
 
       render() {
         return (
-          <div className="App">
-           <CreatePost handleAddTodo={this.handleAddTodo}
-                        changeInput={this.changeInput} 
-                        todos={this.state.todos}
-                        handleDelete={this.handleDelete}
-                        value={this.state.inputdata}
-                        handleCompleted ={this.handleCompleted} 
-                        handleSearchInput = {this.handleSearchInput}  
-                        searchFilter={this.state.searchFilter}/>              
-          
+          <div className="container">
+            <CreatePost changeInput={this.changeInput}
+                        handleAddTodo={this.handleAddTodo}
+                        handleSearchInput = {this.handleSearchInput}
+                        value={this.state.inputdata}  /> 
+
+         
+
+
+          <nav className="z-depth-0 white">
+            <div className="nav-wrapper">
+                <ul id="nav-mobile" className="right">
+                  <li><NavLink className="grey-text" to="/">All</NavLink></li>
+                  <li><NavLink className="grey-text" to="/open">Open</NavLink></li>
+                  <li><NavLink className="grey-text" to="/closed">closed</NavLink></li>
+                </ul>
+            </div>
+          </nav>
+
+          <Switch>
+              <Route exact path='/' component={() => <PostList
+                    
+                    handleCompleted ={this.handleCompleted}
+                    todos={this.state.todos}
+                    handleDelete={this.handleDelete}
+
+                    searchFilter={this.state.searchFilter} /> } />
+
+              <Route path='/open' component={() => <PostList
+                    
+                    handleCompleted ={this.handleCompleted}
+                    todos={this.state.todos.filter(i => !i.completed)}
+                    handleDelete={this.handleDelete}
+                    searchFilter={this.state.searchFilter} />} />
+
+              <Route path='/closed' component={() => <PostList
+                    handleCompleted ={this.handleCompleted}
+                    todos={this.state.todos.filter(i => i.completed)}
+                    handleDelete={this.handleDelete}
+                    value={this.state.inputdata}
+                    searchFilter={this.state.searchFilter} /> } />
+          </Switch>
+         
           </div>
         );
       }
