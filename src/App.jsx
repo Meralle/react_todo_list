@@ -53,6 +53,10 @@ class App extends React.Component {
         localStorage.setItem('todos', JSON.stringify(todosCopy));
         this.setState({ todos : todosCopy}) 
     }
+    // let count = 0;
+    // if(i< 0; i<this.state.todos.length; i++){
+
+    // }
   }   
   
       changeInput = (e) => {
@@ -82,9 +86,9 @@ class App extends React.Component {
           <nav className="z-depth-0 white">
             <div className="nav-wrapper">
                 <ul id="nav-mobile" className="right">
-                  <li><NavLink className="grey-text" to="/">All</NavLink></li>
-                  <li><NavLink className="grey-text" to="/open">Open</NavLink></li>
-                  <li><NavLink className="grey-text" to="/closed">closed</NavLink></li>
+                  <li><NavLink className="grey-text" to="/">All({this.state.todos.length})</NavLink></li>
+                  <li><NavLink className="grey-text" to="/open">open({this.state.todos.filter(t => !t.completed).length})</NavLink></li>
+                  <li><NavLink className="grey-text" to="/closed">closed({this.state.todos.filter(t => t.completed).length})</NavLink></li>
                 </ul>
             </div>
           </nav>
