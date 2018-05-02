@@ -84,8 +84,8 @@ class App extends React.Component {
 
 
           <nav className="z-depth-0 white">
-            <div className="nav-wrapper">
-                <ul id="nav-mobile" className="right">
+            <div className="nav-wrapper navbuttons">
+                <ul id="nav-mobile" className="">
                   <li><NavLink className="grey-text" to="/">All({this.state.todos.length})</NavLink></li>
                   <li><NavLink className="grey-text" to="/open">open({this.state.todos.filter(t => !t.completed).length})</NavLink></li>
                   <li><NavLink className="grey-text" to="/closed">closed({this.state.todos.filter(t => t.completed).length})</NavLink></li>
