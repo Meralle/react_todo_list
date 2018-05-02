@@ -66,6 +66,8 @@ class App extends React.Component {
       this.setState({ searchFilter });      
     }
 
+
+
       render() {
         return (
           <div className="container">
