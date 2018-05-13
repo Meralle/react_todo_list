@@ -33,7 +33,7 @@ class App extends React.Component {
     }
 
    
-     handleDelete = (item) => {
+    handleDelete = (item) => {
      var todos = JSON.parse(localStorage.getItem('todos'));
        for(var i = 0; i < todos.length; i++) {
          if(todos[i].text === item.text) {
@@ -53,13 +53,10 @@ class App extends React.Component {
         localStorage.setItem('todos', JSON.stringify(todosCopy));
         this.setState({ todos : todosCopy}) 
     }
-    // let count = 0;
-    // if(i< 0; i<this.state.todos.length; i++){
-
-    // }
+  
   }   
   
-      changeInput = (e) => {
+    changeInput = (e) => {
         let inputdata = e.target.value.substr(0,20);
         this.setState({ inputdata });
     }
@@ -99,7 +96,6 @@ class App extends React.Component {
                     handleCompleted ={this.handleCompleted}
                     todos={this.state.todos}
                     handleDelete={this.handleDelete}
-
                     searchFilter={this.state.searchFilter} /> } />
 
               <Route path='/open' component={() => <PostList
