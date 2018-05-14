@@ -9,7 +9,7 @@ div .row {
 }
 
 input {
-	max-width:80vh !important;
+	max-width:100vh !important;
 	margin:0 auto;
 }
 
@@ -27,7 +27,7 @@ li a {
 }
 
 .form {
-	width: 80vh;
+	width: 95vh;
 	margin-bottom: 20px;
 }
 .navbuttons{
