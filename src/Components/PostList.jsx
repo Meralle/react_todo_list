@@ -3,6 +3,7 @@
 
 class PostList extends React.Component {
   render() {
+  	
   	 	let filterTodos=this.props.todos.filter( i => i.text.toLowerCase().includes(this.props.searchFilter))
   		let templatelist = this.props.todos.length > 0 ?  (
 			 filterTodos.map((item, i) =>
