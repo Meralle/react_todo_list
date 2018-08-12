@@ -4,5 +4,5 @@
 ![screenshot](./image/todo-list.png)
 
 
-# Start node server
+# Start server
 `npm run start`
